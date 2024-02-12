@@ -16,6 +16,11 @@ package-lock.json
 
 # IDE configurations
 .idea
-.vscode
 
 # Misc
+<<<<<<< HEAD
+=======
+*.map
+sw.min.js
+assets/js/dist
+>>>>>>> upstream/master
