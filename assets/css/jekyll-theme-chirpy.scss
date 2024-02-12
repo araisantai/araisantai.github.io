@@ -4,3 +4,16 @@
 @import 'main';
 
 /* append your custom style below */
+
+.fab.fa-root-me-logo::before {
+    content: url('/assets/img/icon/rootme-32x32.png'); 
+    vertical-align: middle; /* Center the icon vertically */
+    position: relative; 
+}
+
+
+.fab.fa-htb-logo::before {
+    content: url('/assets/img/icon/htb-32x32.png');
+    vertical-align: middle; /* Center the icon vertically */
+    position: relative; 
+}

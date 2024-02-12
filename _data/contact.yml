@@ -10,6 +10,14 @@
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
+- type: root-me
+  icon: 'fab fa-root-me-logo'
+  url:  'https://www.root-me.org/arai-689560'
+
+- type: Hackthebox
+  icon: 'fab fa-htb-logo'
+  url:  'https://app.hackthebox.com/profile/747151'
+
 - type: rss
   icon: "fas fa-rss"
   noblank: true

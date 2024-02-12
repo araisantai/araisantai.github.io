@@ -10,7 +10,7 @@ filepath } and it will show up on this page.
 Hello, I'm **arai** 🥖, Final year computer science student currently learning anything IT related. CTF Competition enjoyer with a team of 3, specialized in web exploitation and digital forensics. Welcome to my blog!
 ## 🔖 Topics
 - Show my topics
-<br><br>Online profiles: [Root-Me](https://www.root-me.org/araisantai) [HackTheBox](https://app.hackthebox.com/profile/176254) [Github](https://github.com/xanhacks/)
+<br><br>Online profiles CTFs: [Root-Me](https://www.root-me.org/arai-689560) [HackTheBox](https://app.hackthebox.com/profile/747151) [CTFtime](https://ctftime.org/user/125849)
 {: .prompt-tip }
 
 
