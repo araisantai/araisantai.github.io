@@ -47,7 +47,7 @@ setelah saya membaca controller flag seperti nya terdapat di service lain yaitu
 
 flag tersebut terdapat di sebuah host elastic search untuk leak all data kita dapat menggunkan query berikut:
 
-[`http://db:9200/_search?pretty=true`](http://db:9200/_search?pretty=true)
+[`https://db:9200/_search?pretty=true`](https://db:9200/_search?pretty=true)
 
 sehingga payload menjadi
 
