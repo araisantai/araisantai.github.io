@@ -60,7 +60,7 @@ order: 5
                         </p>
                     </td>
                     <td>
-                            <img class="article-img" src="https://avatars.githubusercontent.com/u/75112913?v=4" loading="lazy">
+                            <img class="article-img" src="https://avatars.githubusercontent.com/u/75112913?v=4" loading="lazy" alt="asd">
                     </td>
                 </tr>
             </table>
@@ -80,49 +80,7 @@ order: 5
                         </p>
                     </td>
                     <td>
-                            <img class="article-img"  src="https://avatars.githubusercontent.com/u/75112913?v=4" loading="lazy">
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </a>
-</article>
-<!-- copy from here separator -->
-<!-- copy from here separator -->
-<article>
-    <a href="https://github.com/araisantai/" target="_blank" rel="noopener">
-        <div class="article-details">
-            <table>
-                <tr>
-                    <td>
-                        <h2>My github</h2>
-                        <p>
-                            An online cybersecurity competition (CTF) for beginner and advanced.
-                        </p>
-                    </td>
-                    <td>
-                            <img class="article-img"  src="https://avatars.githubusercontent.com/u/75112913?v=4" loading="lazy">
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </a>
-</article>
-<!-- copy from here separator -->
-<!-- copy from here separator -->
-<article>
-    <a href="https://github.com/araisantai/" target="_blank" rel="noopener">
-        <div class="article-details">
-            <table>
-                <tr>
-                    <td>
-                        <h2>My github</h2>
-                        <p>
-                            An online cybersecurity competition (CTF) for beginner and advanced.
-                        </p>
-                    </td>
-                    <td>
-                            <img class="article-img"  src="https://avatars.githubusercontent.com/u/75112913?v=4" loading="lazy">
+                            <img class="article-img"  src="https://avatars.githubusercontent.com/u/75112913?v=4" loading="lazy" alt="asd">
                     </td>
                 </tr>
             </table>
