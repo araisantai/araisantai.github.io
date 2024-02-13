@@ -38,4 +38,4 @@ I'm part of CSI community yang mana merupakan indonesia based cybersecurity comm
 
 An online documentation with cheatsheets about infosec / CTF.
 
-![photo](link)
+<!-- ![photo](link) -->
