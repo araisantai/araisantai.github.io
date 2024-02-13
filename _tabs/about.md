@@ -4,9 +4,8 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: . 
-filepath } and it will show up on this page.
-# 📜 whoami
+> ## 📜 whoami
+
 Hello, I'm **arai** 🥖, Final year computer science student currently learning anything IT related. CTF Competition enjoyer with a team of 3, specialized in web exploitation and digital forensics. Welcome to my blog!
 ## 🔖 Topics
 - Show my topics

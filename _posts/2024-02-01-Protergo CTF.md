@@ -93,7 +93,7 @@ def blind(kolom,table):
 
 1. **Setup:**
     - The script uses the **`requests`**, **`re`**, and **`base64`** libraries in Python.
-    - The target URL is set to "[http://tokyo.ctf.protergo.party:10002/](http://tokyo.ctf.protergo.party:10002/)".
+    - The target URL is set to "[tokyo.ctf.protergo.party:10002/](tokyo.ctf.protergo.party:10002/)".
     - A cookie is specified as **`{"laravel_session": "w8DdHi4IgwEMV5lWoKnppOOxWgH5nGBXVYGZDddb;"}`**.
 2. **Functions:**
     - **get_token():**
@@ -231,7 +231,7 @@ There is a private jwt.pem that can be decrypted using a passphrase to be used f
 
 ![Protergo%20CTF%20a0136568816c40fea9a8d66ccba3460f/Untitled%209.png](Protergo%20CTF%20a0136568816c40fea9a8d66ccba3460f/Untitled%209.png)
 
-The login feature, when registering, will provide an authentication cookie that can be used as an example to be recreated on [jwt.io](http://jwt.io/). Then, you can log in using that JWT and access the home with the `auth` JWT token cookie.
+The login feature, when registering, will provide an authentication cookie that can be used as an example to be recreated on [jwt.io](https://jwt.io/). Then, you can log in using that JWT and access the home with the `auth` JWT token cookie.
 ### Solver
 ```python
 import jwt
