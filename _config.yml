@@ -70,10 +70,10 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://avatars.githubusercontent.com'
+img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/u/75112913"
+avatar: "https://avatars.githubusercontent.com/u/75112913"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -150,7 +150,7 @@ defaults:
   - scope:
       path: _drafts
     values:
-      comments: false
+      comments: true
   - scope:
       path: ""
       type: tabs # see `site.collections`
@@ -196,3 +196,4 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+     
