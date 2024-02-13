@@ -14,9 +14,9 @@ timezone: Asia/Jakarta
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Arai Santai # the main title
+title: Araisantai Archive Pages # the main title
 
-tagline: Everything about infosec, enjoyy
+tagline: Everything about infosec, CTF enjoyer
 
 description: >- # used by seo meta and the atom feed
   Final year computer science student at IPB University currently learning anything IT related. CTF Competition enjoyer with a team of 3, specialized in web exploitation and digital forensics. Interested in Cyber Security, especially in Web Security. Selftaught, persistent, and eager to learn more.

@@ -30,7 +30,7 @@ Hello, I'm **arai** 🥖, Final year computer science student currently learning
 ### Community
 ### [CSI](https://cybersecurityipb.github.io/)
 
-I'm part of CSI community yang mana merupakan indonesia based cybersecurity community from campus, actively playing CTF's national and international in [CTFtime](https://ctftime.org/team/11930)
+I am part of the CSI community, which is an Indonesia-based cybersecurity community from campus IPB university, actively participating in national and international Capture The Flag (CTF) competitions on [CTFtime](https://ctftime.org/team/11930)
 
 ![CSI](https://avatars.githubusercontent.com/u/118613026?s=200&v=4)
 

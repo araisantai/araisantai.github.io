@@ -11,9 +11,10 @@ img_path: /assets/img/posts/
 ---
 # Protergo CTF
 
-Tags: national
-Status: Done
-pwned: 3
+2024 Protergo CTF, 7 Days CTF Challenges by Protergo
+- Tags: national
+- Status: Done
+- pwned: 3
 
 ## Jumper
 
