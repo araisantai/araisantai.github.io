@@ -1,6 +1,5 @@
 ---
 title: Protergo CTF
-author: araisantai
 date: 2024-02-08 00:00:00 +/-TTTT
 categories: [CTFs Archive, 2024 CTF]
 tags: [CTFs]     # TAG names should always be lowercase
