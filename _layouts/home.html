@@ -1,0 +1,102 @@
+---
+layout: default
+---
+
+<section class="hero section">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">Daily notes · digital garden · personal operating system</p>
+      <h1>Arai Notes</h1>
+      <p class="hero__lead">
+        A practical journal for building better habits, safer systems, clearer thinking, and a more intentional life.
+      </p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#categories">Browse Categories</a>
+        <a class="button button--ghost" href="#latest">Read Latest Posts</a>
+      </div>
+    </div>
+    <div class="hero__panel" aria-label="Arai Notes focus areas">
+      <span>Reflect</span>
+      <span>Learn</span>
+      <span>Secure</span>
+      <span>Train</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container intro-card">
+    <div>
+      <p class="eyebrow">About this site</p>
+      <h2>A personal knowledge base with public accountability.</h2>
+    </div>
+    <p>
+      Arai Notes is a clean place to write short daily essays, technical notes, learning logs, and careful reflections.
+      The goal is not to look polished at the expense of consistency. The goal is to make useful thinking easier to publish.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Choose a path</p>
+      <h2>Browse by category</h2>
+      <p>Each area is designed as a focused notebook with simple, searchable posts.</p>
+    </div>
+    <div class="category-grid">
+      {% for category in site.blog_categories %}
+        {% include category-card.html category=category %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--muted" id="latest">
+  <div class="container latest-grid">
+    <div>
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Latest writing</p>
+        <h2>Recent notes</h2>
+        <p>Fresh entries from the journal, ordered by publication date.</p>
+      </div>
+      <div class="post-list">
+        {% for post in site.posts limit: 6 %}
+          <article class="post-card">
+            <p class="post-card__meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+            <p>{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <aside class="sidebar-card">
+      <p class="eyebrow">Search-ready</p>
+      <h2>Find a note</h2>
+      <p>Local JSON search is prepared without external services. Type a title, category, or tag.</p>
+      <label class="search-box">
+        <span class="screen-reader-text">Search posts</span>
+        <input type="search" placeholder="Search Arai Notes..." data-search-input>
+      </label>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="subscribe">
+  <div class="container subscribe-card">
+    <div>
+      <p class="eyebrow">Subscribe</p>
+      <h2>Newsletter placeholder</h2>
+      <p>
+        Add an email provider, RSS callout, or manual newsletter workflow later. For now, this block keeps the design ready.
+      </p>
+    </div>
+    <form class="subscribe-form" action="#" method="post">
+      <label class="screen-reader-text" for="subscribe-email">Email address</label>
+      <input id="subscribe-email" type="email" placeholder="you@example.com" disabled>
+      <button class="button button--primary" type="button" disabled>Coming Soon</button>
+    </form>
+  </div>
+</section>

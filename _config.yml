@@ -1,0 +1,82 @@
+title: Arai Notes
+description: A personal daily blog for self-improvement, cybersecurity, technology, finance, workout, language learning, media management, and Islam.
+url: "https://araisantai.github.io"
+baseurl: ""
+lang: en
+timezone: Asia/Bangkok
+
+author:
+  name: Arai
+
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+
+sass:
+  style: compressed
+  sourcemap: never
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+blog_categories:
+  - slug: personal-development
+    title: Personal Development
+    emoji: "🌱"
+    color: "#22c55e"
+    description: Daily systems, habits, reflection, discipline, and steady personal growth.
+  - slug: cybersecurity
+    title: Cybersecurity
+    emoji: "🛡️"
+    color: "#38bdf8"
+    description: Ethical, defensive security notes for safer systems, habits, and workflows.
+  - slug: technology
+    title: Technology
+    emoji: "💻"
+    color: "#818cf8"
+    description: Tools, software, infrastructure, automation, and practical engineering observations.
+  - slug: finance
+    title: Finance
+    emoji: "📊"
+    color: "#f59e0b"
+    description: Personal finance learning, money habits, journaling, and long-term thinking.
+  - slug: workout
+    title: Workout
+    emoji: "🏋️"
+    color: "#ef4444"
+    description: Strength, mobility, recovery, and sustainable fitness routines.
+  - slug: learning-languages
+    title: Learning Languages
+    emoji: "🗣️"
+    color: "#14b8a6"
+    description: Study methods, vocabulary systems, input practice, and language reflections.
+  - slug: media-management
+    title: Media Management
+    emoji: "🎞️"
+    color: "#ec4899"
+    description: Organizing photos, videos, files, archives, and personal knowledge libraries.
+  - slug: islam
+    title: Islam
+    emoji: "☪️"
+    color: "#10b981"
+    description: Respectful reflections, learning notes, source tracking, and personal practice.
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Arai
+  - scope:
+      path: "categories"
+    values:
+      layout: category
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md

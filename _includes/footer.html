@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div>
+      <a class="brand brand--footer" href="{{ '/' | relative_url }}">
+        <span class="brand__mark">AN</span>
+        <span>{{ site.title }}</span>
+      </a>
+      <p>{{ site.description }}</p>
+    </div>
+    <div>
+      <h2>Categories</h2>
+      <ul class="footer-list">
+        {% for category in site.blog_categories %}
+          <li><a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2>Follow</h2>
+      <ul class="footer-list">
+        <li><a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
+        <li><a href="{{ '/search.json' | relative_url }}">Search Index</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© {{ site.time | date: "%Y" }} {{ site.title }}. Built with Jekyll.</p>
+  </div>
+</footer>

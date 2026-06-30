@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+{% assign topic = site.blog_categories | where: "slug", page.category | first %}
+{% assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" %}
+
+<section class="category-hero section">
+  <div class="container">
+    <a class="back-link" href="{{ '/' | relative_url }}">← All categories</a>
+    <p class="category-hero__emoji" aria-hidden="true">{{ topic.emoji }}</p>
+    <p class="eyebrow">Category</p>
+    <h1>{{ page.title | default: topic.title | escape }}</h1>
+    <p>{{ page.description | default: topic.description }}</p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    {% if page.intro %}
+      <div class="intro-card intro-card--single">
+        <p>{{ page.intro }}</p>
+      </div>
+    {% endif %}
+
+    <div class="post-list post-list--grid">
+      {% for post in category_posts %}
+        <article class="post-card">
+          <p class="post-card__meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncate: 160 }}</p>
+        </article>
+      {% else %}
+        <p>No posts in this category yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

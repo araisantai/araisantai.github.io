@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-hero">
+    <div class="container container--narrow">
+      <a class="back-link" href="{{ '/' | relative_url }}">← Back to home</a>
+      <div class="post-hero__meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.author %}<span>{{ page.author }}</span>{% endif %}
+      </div>
+      <h1>{{ page.title | escape }}</h1>
+      {% if page.description %}
+        <p>{{ page.description }}</p>
+      {% endif %}
+      {% if page.categories %}
+        <div class="pill-row">
+          {% for category_slug in page.categories %}
+            {% assign topic = site.blog_categories | where: "slug", category_slug | first %}
+            <a class="pill" href="{{ '/categories/' | append: category_slug | append: '/' | relative_url }}">
+              {% if topic %}{{ topic.emoji }} {{ topic.title }}{% else %}{{ category_slug }}{% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="container container--narrow">
+    {% if page.disclaimer %}
+      <aside class="notice">
+        {{ page.disclaimer }}
+      </aside>
+    {% endif %}
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    {% if page.categories contains "islam" %}
+      <section class="source-box">
+        <h2>Source notes</h2>
+        {% if page.source_references %}
+          <ul>
+            {% for reference in page.source_references %}
+              <li>{{ reference }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Add Qur’an, Hadith, scholar, or source references here when a post needs them.</p>
+        {% endif %}
+      </section>
+    {% endif %}
+
+    <nav class="post-nav" aria-label="Post navigation">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a>
+      {% endif %}
+    </nav>
+  </div>
+</article>

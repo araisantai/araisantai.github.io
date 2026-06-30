@@ -1,0 +1,8 @@
+{% assign category = include.category %}
+<article class="category-card" style="--card-accent: {{ category.color }};">
+  <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">
+    <span class="category-card__icon" aria-hidden="true">{{ category.emoji }}</span>
+    <span class="category-card__title">{{ category.title }}</span>
+    <span class="category-card__description">{{ category.description }}</span>
+  </a>
+</article>

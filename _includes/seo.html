@@ -1,0 +1,25 @@
+{% assign seo_title = page.title | default: site.title %}
+{% assign seo_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 %}
+{% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
+
+<title>{% if page.title and page.title != site.title %}{{ seo_title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+<meta name="description" content="{{ seo_description | escape }}">
+<meta name="author" content="{{ site.author.name | default: site.title | escape }}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:description" content="{{ seo_description | escape }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ canonical_url }}">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:description" content="{{ seo_description | escape }}">
+
+{% if page.layout == "post" %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag | escape }}">
+  {% endfor %}
+{% endif %}

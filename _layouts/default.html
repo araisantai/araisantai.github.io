@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      try {
+        var savedTheme = localStorage.getItem("theme");
+        if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+      } catch (error) {}
+    </script>
+    {% include seo.html %}
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
+    <script defer src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  </head>
+  <body>
+    {% include header.html %}
+    <main id="main-content" class="site-main">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+  </body>
+</html>
