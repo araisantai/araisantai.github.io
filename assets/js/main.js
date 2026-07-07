@@ -19,10 +19,11 @@
   };
 
   const setTheme = (theme) => {
+    const label = toggle ? toggle.querySelector("[data-theme-toggle-label]") : null;
     root.dataset.theme = theme;
     if (toggle) {
       toggle.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} mode`);
-      toggle.innerHTML = `<span aria-hidden="true">${theme === "dark" ? "☀" : "☾"}</span>`;
+      if (label) label.textContent = theme === "dark" ? "Day" : "Night";
     }
     try {
       localStorage.setItem("theme", theme);
@@ -46,7 +47,7 @@
     }
 
     if (!items.length) {
-      searchResults.innerHTML = `<p>No matching notes yet.</p>`;
+      searchResults.innerHTML = "<p>No matching notes yet.</p>";
       return;
     }
 
@@ -89,7 +90,7 @@
         posts = data;
       })
       .catch(() => {
-        searchResults.innerHTML = `<p>Search index is unavailable while the site is building.</p>`;
+        searchResults.innerHTML = "<p>Search index is unavailable while the site is building.</p>";
       });
 
     searchInput.addEventListener("input", (event) => {
