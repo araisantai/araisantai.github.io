@@ -8,14 +8,20 @@
 
     <nav class="site-nav" aria-label="Primary navigation">
       {% for category in site.blog_categories %}
-        <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.nav_label | default: category.title }}</a>
+        <a
+          class="site-nav__link"
+          style="--nav-color: {{ category.color }};"
+          href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}"
+        >{{ category.nav_label | default: category.title }}</a>
       {% endfor %}
-      <a href="{{ '/' | relative_url }}#latest">Latest Post</a>
-      <a href="{{ '/' | relative_url }}#about">About Me</a>
+      <a class="site-nav__link site-nav__link--latest" href="{{ '/' | relative_url }}#latest">Latest Post</a>
+      <a class="site-nav__link site-nav__link--about" href="{{ '/' | relative_url }}#contact">About Me</a>
     </nav>
 
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
-      <span class="theme-toggle__label" data-theme-toggle-label>Night</span>
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9728;</span>
+      <span class="theme-toggle__knob" aria-hidden="true"></span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9790;</span>
     </button>
   </div>
 </header>

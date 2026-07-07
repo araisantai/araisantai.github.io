@@ -4,13 +4,12 @@ Arai Notes is a clean, lightweight Jekyll blog for a personal daily knowledge jo
 
 ## Topics
 
-- Personal development
+- Personal
 - Cybersecurity
-- Technology
 - Finance
+- Languages
 - Workout
-- Learning languages
-- Media management
+- Media
 - Islam
 
 ## Local development
@@ -35,15 +34,15 @@ This repository uses GitHub Actions to deploy to GitHub Pages from the `main` br
 
 In GitHub repository settings:
 
-1. Go to **Settings → Pages**.
-2. Set **Build and deployment → Source** to **GitHub Actions**.
+1. Go to **Settings > Pages**.
+2. Set **Build and deployment > Source** to **GitHub Actions**.
 3. Push changes to `main`.
 
 ## Content notes
 
 - Cybersecurity posts should stay ethical, educational, and defensive-focused.
 - Finance posts are personal learning and journaling, not financial advice.
-- Islam posts should be respectful and source-aware. Add Qur’an, Hadith, or reliable source references when needed.
+- Islam posts should be respectful and source-aware. Add Qur'an, Hadith, or reliable source references when needed.
 
 ## Structure
 

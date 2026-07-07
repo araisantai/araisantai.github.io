@@ -5,7 +5,7 @@ date: 2024-01-08 07:00:00 +0700
 categories: [islam]
 tags: [reflection, learning, sources]
 source_references:
-  - "Add Qur’an references here when discussing specific verses."
+  - "Add Qur'an references here when discussing specific verses."
   - "Add Hadith references here when discussing specific narrations."
   - "Add trusted scholarly or educational sources when a topic requires interpretation."
 ---

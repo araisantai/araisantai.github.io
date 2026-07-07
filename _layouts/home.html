@@ -2,49 +2,14 @@
 layout: default
 ---
 
-<section class="hero section">
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <p class="eyebrow">Daily notes / digital garden / personal operating system</p>
-      <h1>Arai Notes</h1>
-      <p class="hero__lead">
-        A clean personal notebook for habits, cybersecurity, finance, language learning, workouts, media, Islam, and everyday reflection.
-      </p>
-      <div class="hero__actions">
-        <a class="button button--primary" href="#categories">Browse Categories</a>
-        <a class="button button--ghost" href="#latest">Recent Notes</a>
-      </div>
-    </div>
-
-    <div class="hero__panel" aria-label="Arai Notes categories">
-      {% for category in site.blog_categories %}
-        <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.nav_label | default: category.title }}</a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="section section--tight" id="about">
-  <div class="container intro-card">
-    <div>
-      <p class="eyebrow">About Me</p>
-      <h2>Arai's personal knowledge base.</h2>
-    </div>
-    <p>
-      I use Arai Notes to keep public notes on learning, routines, technical practice, and careful personal reflection.
-      The site is meant to stay simple: easy to scan, easy to read, and easy to update over time.
-    </p>
-  </div>
-</section>
-
-<section class="section" id="categories">
+<section class="section home-categories" id="categories">
   <div class="container">
     <div class="section-heading">
       <p class="eyebrow">All Categories</p>
-      <h2>Browse every notebook</h2>
+      <h1>Browse every notebook</h1>
       <p>Each category collects notes around one part of life, study, or practice.</p>
     </div>
-    <div class="category-grid">
+    <div class="category-grid category-grid--square">
       {% for category in site.blog_categories %}
         {% include category-card.html category=category %}
       {% endfor %}

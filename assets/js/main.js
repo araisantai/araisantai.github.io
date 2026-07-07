@@ -19,11 +19,10 @@
   };
 
   const setTheme = (theme) => {
-    const label = toggle ? toggle.querySelector("[data-theme-toggle-label]") : null;
     root.dataset.theme = theme;
     if (toggle) {
       toggle.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} mode`);
-      if (label) label.textContent = theme === "dark" ? "Day" : "Night";
+      toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
     }
     try {
       localStorage.setItem("theme", theme);

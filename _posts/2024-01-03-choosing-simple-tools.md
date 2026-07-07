@@ -1,8 +1,8 @@
 ---
 title: Choosing Simple Tools
-description: A technology note about preferring tools that are understandable, durable, and easy to repair.
+description: A personal note about preferring tools that are understandable, durable, and easy to repair.
 date: 2024-01-03 07:00:00 +0700
-categories: [technology]
+categories: [personal-development]
 tags: [tools, simplicity, systems]
 ---
 
