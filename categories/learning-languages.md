@@ -1,5 +1,5 @@
 ---
-title: Learning Languages
+title: Languages
 category: learning-languages
 permalink: /categories/learning-languages/
 description: Language learning systems, vocabulary practice, listening input, and study reflections.

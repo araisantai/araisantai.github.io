@@ -1,5 +1,5 @@
 ---
-title: Media Management
+title: Media
 category: media-management
 permalink: /categories/media-management/
 description: Organizing photos, videos, files, archives, and personal media libraries.

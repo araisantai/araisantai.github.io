@@ -1,5 +1,5 @@
 ---
-title: Personal Development
+title: Personal
 category: personal-development
 permalink: /categories/personal-development/
 description: Notes on habits, discipline, reflection, focus, and steady personal growth.
