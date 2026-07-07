@@ -5,34 +5,34 @@ layout: default
 <section class="hero section">
   <div class="container hero__grid">
     <div class="hero__copy">
-      <p class="eyebrow">Daily notes · digital garden · personal operating system</p>
+      <p class="eyebrow">Daily notes / digital garden / personal operating system</p>
       <h1>Arai Notes</h1>
       <p class="hero__lead">
-        A practical journal for building better habits, safer systems, clearer thinking, and a more intentional life.
+        A clean personal notebook for habits, cybersecurity, finance, language learning, workouts, media, Islam, and everyday reflection.
       </p>
       <div class="hero__actions">
         <a class="button button--primary" href="#categories">Browse Categories</a>
-        <a class="button button--ghost" href="#latest">Read Latest Posts</a>
+        <a class="button button--ghost" href="#latest">Recent Notes</a>
       </div>
     </div>
-    <div class="hero__panel" aria-label="Arai Notes focus areas">
-      <span>Reflect</span>
-      <span>Learn</span>
-      <span>Secure</span>
-      <span>Train</span>
+
+    <div class="hero__panel" aria-label="Arai Notes categories">
+      {% for category in site.blog_categories %}
+        <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.nav_label | default: category.title }}</a>
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="section section--tight">
+<section class="section section--tight" id="about">
   <div class="container intro-card">
     <div>
-      <p class="eyebrow">About this site</p>
-      <h2>A personal knowledge base with public accountability.</h2>
+      <p class="eyebrow">About Me</p>
+      <h2>Arai's personal knowledge base.</h2>
     </div>
     <p>
-      Arai Notes is a clean place to write short daily essays, technical notes, learning logs, and careful reflections.
-      The goal is not to look polished at the expense of consistency. The goal is to make useful thinking easier to publish.
+      I use Arai Notes to keep public notes on learning, routines, technical practice, and careful personal reflection.
+      The site is meant to stay simple: easy to scan, easy to read, and easy to update over time.
     </p>
   </div>
 </section>
@@ -40,9 +40,9 @@ layout: default
 <section class="section" id="categories">
   <div class="container">
     <div class="section-heading">
-      <p class="eyebrow">Choose a path</p>
-      <h2>Browse by category</h2>
-      <p>Each area is designed as a focused notebook with simple, searchable posts.</p>
+      <p class="eyebrow">All Categories</p>
+      <h2>Browse every notebook</h2>
+      <p>Each category collects notes around one part of life, study, or practice.</p>
     </div>
     <div class="category-grid">
       {% for category in site.blog_categories %}
@@ -56,8 +56,8 @@ layout: default
   <div class="container latest-grid">
     <div>
       <div class="section-heading section-heading--left">
-        <p class="eyebrow">Latest writing</p>
-        <h2>Recent notes</h2>
+        <p class="eyebrow">Latest Post</p>
+        <h2>Recent Notes</h2>
         <p>Fresh entries from the journal, ordered by publication date.</p>
       </div>
       <div class="post-list">
@@ -72,9 +72,9 @@ layout: default
     </div>
 
     <aside class="sidebar-card">
-      <p class="eyebrow">Search-ready</p>
+      <p class="eyebrow">Search</p>
       <h2>Find a note</h2>
-      <p>Local JSON search is prepared without external services. Type a title, category, or tag.</p>
+      <p>Search by title, category, or tag.</p>
       <label class="search-box">
         <span class="screen-reader-text">Search posts</span>
         <input type="search" placeholder="Search Arai Notes..." data-search-input>
@@ -84,19 +84,28 @@ layout: default
   </div>
 </section>
 
-<section class="section" id="subscribe">
-  <div class="container subscribe-card">
+<section class="section" id="contact">
+  <div class="container contact-card">
     <div>
-      <p class="eyebrow">Subscribe</p>
-      <h2>Newsletter placeholder</h2>
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
       <p>
-        Add an email provider, RSS callout, or manual newsletter workflow later. For now, this block keeps the design ready.
+        For questions, corrections, or thoughtful notes, email me directly. You can also use the links below to follow updates.
       </p>
     </div>
-    <form class="subscribe-form" action="#" method="post">
-      <label class="screen-reader-text" for="subscribe-email">Email address</label>
-      <input id="subscribe-email" type="email" placeholder="you@example.com" disabled>
-      <button class="button button--primary" type="button" disabled>Coming Soon</button>
-    </form>
+    <ul class="contact-list">
+      <li>
+        <span>Email</span>
+        <a href="mailto:{{ site.contact.email | default: site.email }}">{{ site.contact.email | default: site.email }}</a>
+      </li>
+      <li>
+        <span>Website</span>
+        <a href="{{ site.url }}">{{ site.url }}</a>
+      </li>
+      <li>
+        <span>RSS</span>
+        <a href="{{ '/feed.xml' | relative_url }}">Feed</a>
+      </li>
+    </ul>
   </div>
 </section>

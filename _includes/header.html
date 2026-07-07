@@ -3,18 +3,19 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title | escape }} home">
-      <span class="brand__mark">AN</span>
       <span>{{ site.title }}</span>
     </a>
 
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="{{ '/' | relative_url }}#categories">Categories</a>
-      <a href="{{ '/' | relative_url }}#latest">Latest</a>
-      <a href="{{ '/' | relative_url }}#subscribe">Subscribe</a>
+      {% for category in site.blog_categories %}
+        <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.nav_label | default: category.title }}</a>
+      {% endfor %}
+      <a href="{{ '/' | relative_url }}#latest">Latest Post</a>
+      <a href="{{ '/' | relative_url }}#about">About Me</a>
     </nav>
 
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
-      <span aria-hidden="true">☾</span>
+      <span class="theme-toggle__label" data-theme-toggle-label>Night</span>
     </button>
   </div>
 </header>

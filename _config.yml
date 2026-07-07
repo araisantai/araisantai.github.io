@@ -1,5 +1,5 @@
 title: Arai Notes
-description: A personal daily blog for self-improvement, cybersecurity, technology, finance, workout, language learning, media management, and Islam.
+description: A personal daily blog for self-improvement, cybersecurity, finance, workout, language learning, media management, and Islam.
 url: "https://araisantai.github.io"
 baseurl: ""
 lang: en
@@ -7,6 +7,9 @@ timezone: Asia/Bangkok
 
 author:
   name: Arai
+
+contact:
+  email: araisantai@users.noreply.github.com
 
 markdown: kramdown
 highlighter: rouge
@@ -22,43 +25,45 @@ plugins:
 
 blog_categories:
   - slug: personal-development
-    title: Personal Development
-    emoji: "🌱"
+    title: Personal
+    nav_label: Personal
+    emoji: "Personal"
     color: "#22c55e"
     description: Daily systems, habits, reflection, discipline, and steady personal growth.
   - slug: cybersecurity
     title: Cybersecurity
-    emoji: "🛡️"
+    nav_label: Cybersecurity
+    emoji: "Security"
     color: "#38bdf8"
     description: Ethical, defensive security notes for safer systems, habits, and workflows.
-  - slug: technology
-    title: Technology
-    emoji: "💻"
-    color: "#818cf8"
-    description: Tools, software, infrastructure, automation, and practical engineering observations.
   - slug: finance
     title: Finance
-    emoji: "📊"
+    nav_label: Finance
+    emoji: "Finance"
     color: "#f59e0b"
     description: Personal finance learning, money habits, journaling, and long-term thinking.
-  - slug: workout
-    title: Workout
-    emoji: "🏋️"
-    color: "#ef4444"
-    description: Strength, mobility, recovery, and sustainable fitness routines.
   - slug: learning-languages
-    title: Learning Languages
-    emoji: "🗣️"
+    title: Languages
+    nav_label: Languages
+    emoji: "Languages"
     color: "#14b8a6"
     description: Study methods, vocabulary systems, input practice, and language reflections.
+  - slug: workout
+    title: Workout
+    nav_label: Workout
+    emoji: "Workout"
+    color: "#ef4444"
+    description: Strength, mobility, recovery, and sustainable fitness routines.
   - slug: media-management
-    title: Media Management
-    emoji: "🎞️"
+    title: Media
+    nav_label: Media
+    emoji: "Media"
     color: "#ec4899"
     description: Organizing photos, videos, files, archives, and personal knowledge libraries.
   - slug: islam
     title: Islam
-    emoji: "☪️"
+    nav_label: Islam
+    emoji: "Islam"
     color: "#10b981"
     description: Respectful reflections, learning notes, source tracking, and personal practice.
 
