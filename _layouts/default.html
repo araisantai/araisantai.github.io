@@ -6,8 +6,10 @@
     <script>
       try {
         var savedTheme = localStorage.getItem("theme");
-        if (savedTheme) document.documentElement.dataset.theme = savedTheme;
-      } catch (error) {}
+        document.documentElement.dataset.theme = savedTheme || "light";
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
     </script>
     {% include seo.html %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">

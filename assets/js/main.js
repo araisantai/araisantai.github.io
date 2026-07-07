@@ -15,7 +15,7 @@
       if (saved) return saved;
     } catch (error) {}
 
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light";
   };
 
   const setTheme = (theme) => {
