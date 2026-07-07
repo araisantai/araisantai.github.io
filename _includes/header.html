@@ -10,7 +10,7 @@
       {% for category in site.blog_categories %}
         <a
           class="site-nav__link"
-          style="--nav-color: {{ category.color }};"
+          style="--nav-color: {{ category.nav_color | default: category.color }};"
           href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}"
         >{{ category.nav_label | default: category.title }}</a>
       {% endfor %}

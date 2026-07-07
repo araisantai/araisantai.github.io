@@ -29,42 +29,49 @@ blog_categories:
     nav_label: Personal
     emoji: "Personal"
     color: "#22c55e"
+    nav_color: "#16a34a"
     description: Daily systems, habits, reflection, discipline, and steady personal growth.
   - slug: cybersecurity
     title: Cybersecurity
     nav_label: Cybersecurity
     emoji: "Security"
     color: "#38bdf8"
+    nav_color: "#0284c7"
     description: Ethical, defensive security notes for safer systems, habits, and workflows.
   - slug: finance
     title: Finance
     nav_label: Finance
     emoji: "Finance"
     color: "#f59e0b"
+    nav_color: "#d97706"
     description: Personal finance learning, money habits, journaling, and long-term thinking.
   - slug: learning-languages
     title: Languages
     nav_label: Languages
     emoji: "Languages"
     color: "#14b8a6"
+    nav_color: "#0d9488"
     description: Study methods, vocabulary systems, input practice, and language reflections.
   - slug: workout
     title: Workout
     nav_label: Workout
     emoji: "Workout"
     color: "#ef4444"
+    nav_color: "#dc2626"
     description: Strength, mobility, recovery, and sustainable fitness routines.
   - slug: media-management
     title: Media
     nav_label: Media
     emoji: "Media"
     color: "#ec4899"
+    nav_color: "#db2777"
     description: Organizing photos, videos, files, archives, and personal knowledge libraries.
   - slug: islam
     title: Islam
     nav_label: Islam
     emoji: "Islam"
     color: "#10b981"
+    nav_color: "#059669"
     description: Respectful reflections, learning notes, source tracking, and personal practice.
 
 defaults:
