@@ -217,38 +217,70 @@ button {
 .site-nav__link {
   display: inline-flex;
   align-items: center;
-  position: relative;
   min-height: 2rem;
-  padding: 0 0.15rem 0.22rem;
-  color: var(--nav-color);
+  padding: 0 0.35rem;
+  color: var(--text-muted);
+  text-decoration: none;
   white-space: nowrap;
-  transition: color 160ms ease, transform 160ms ease;
-}
-
-.site-nav__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 0.18rem;
-  background: var(--nav-color);
-  border-radius: 999px;
-  opacity: 0.45;
+  transition: color 160ms ease;
 }
 
 .site-nav__link:hover,
 .site-nav__link:focus-visible {
-  color: color-mix(in srgb, var(--nav-color) 82%, var(--text));
-  transform: translateY(-1px);
+  color: var(--text);
 }
 
-.site-nav__link--latest {
-  --nav-color: #475569;
+.nav-dropdown {
+  position: relative;
 }
 
-.site-nav__link--about {
-  --nav-color: #475569;
+.nav-dropdown__summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.nav-dropdown__summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-dropdown__summary::after {
+  content: "v";
+  margin-left: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.nav-dropdown[open] .nav-dropdown__summary {
+  color: var(--text);
+}
+
+.nav-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 0;
+  z-index: 20;
+  display: grid;
+  min-width: 12rem;
+  padding: 0.45rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.nav-dropdown__menu a {
+  padding: 0.55rem 0.7rem;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-dropdown__menu a:hover,
+.nav-dropdown__menu a:focus-visible {
+  color: var(--text);
+  background: var(--surface-soft);
 }
 
 .theme-toggle {
@@ -776,6 +808,17 @@ button {
     gap: 0.75rem;
     overflow-x: auto;
     padding-bottom: 0.15rem;
+  }
+
+  .nav-dropdown {
+    position: static;
+  }
+
+  .nav-dropdown__menu {
+    position: static;
+    min-width: 100%;
+    margin-top: 0.4rem;
+    box-shadow: none;
   }
 
   .category-grid,

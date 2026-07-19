@@ -7,15 +7,16 @@
     </a>
 
     <nav class="site-nav" aria-label="Primary navigation">
-      {% for category in site.blog_categories %}
-        <a
-          class="site-nav__link"
-          style="--nav-color: {{ category.nav_color | default: category.color }};"
-          href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}"
-        >{{ category.nav_label | default: category.title }}</a>
-      {% endfor %}
-      <a class="site-nav__link site-nav__link--latest" href="{{ '/' | relative_url }}#latest">Latest Post</a>
-      <a class="site-nav__link site-nav__link--about" href="{{ '/' | relative_url }}#contact">About Me</a>
+      <details class="nav-dropdown">
+        <summary class="site-nav__link nav-dropdown__summary">Categories</summary>
+        <div class="nav-dropdown__menu">
+          {% for category in site.blog_categories %}
+            <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.nav_label | default: category.title }}</a>
+          {% endfor %}
+        </div>
+      </details>
+      <a class="site-nav__link" href="{{ '/' | relative_url }}#latest">Latest Post</a>
+      <a class="site-nav__link" href="{{ '/' | relative_url }}#contact">About Me</a>
     </nav>
 
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
