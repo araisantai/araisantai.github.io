@@ -1,6 +1,6 @@
 {% assign category = include.category %}
 <article class="category-card" style="--card-accent: {{ category.color }};">
-  <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">
+  <a href="{{ category.url | relative_url }}">
     <span class="category-card__icon" aria-hidden="true">
       {% case category.slug %}
       {% when "personal-development" %}

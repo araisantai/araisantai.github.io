@@ -1,9 +1,6 @@
----
-layout: null
-permalink: /search.json
----
+{% assign indexed_posts = site.posts | where_exp: "post", "post.categories contains page.category" %}
 [
-  {% for post in site.posts %}
+  {% for post in indexed_posts %}
     {
       "title": {{ post.title | jsonify }},
       "description": {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | jsonify }},

@@ -10,13 +10,14 @@
       <details class="nav-dropdown">
         <summary class="site-nav__link nav-dropdown__summary">Categories</summary>
         <div class="nav-dropdown__menu">
+          {% assign active_category = page.category | default: page.categories.first %}
           {% for category in site.blog_categories %}
-            <a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.nav_label | default: category.title }}</a>
+            <a href="{{ category.url | relative_url }}"{% if active_category == category.slug %} aria-current="true"{% endif %}>{{ category.title }}</a>
           {% endfor %}
         </div>
       </details>
-      <a class="site-nav__link" href="{{ '/' | relative_url }}#latest">Latest Post</a>
-      <a class="site-nav__link" href="{{ '/' | relative_url }}#contact">About Me</a>
+      
+      <a class="site-nav__link" href="{{ '/' | relative_url }}">About Me</a>
     </nav>
 
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">

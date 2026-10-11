@@ -7,8 +7,8 @@ layout: default
 
 <section class="category-hero section">
   <div class="container">
-    <a class="back-link" href="{{ '/' | relative_url }}">All categories</a>
-    <p class="eyebrow">Category</p>
+    <p class="category-hero__emoji" aria-hidden="true">{{ topic.emoji }}</p>
+    <p class="eyebrow">{{ site.author.name }}'s notebook</p>
     <h1>{{ page.title | default: topic.title | escape }}</h1>
     <p>{{ page.description | default: topic.description }}</p>
   </div>
@@ -22,7 +22,12 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="post-list post-list--grid">
+    <div class="latest-grid">
+      <div>
+        <div class="section-heading section-heading--left">
+          <h2>Latest {{ topic.title | escape }} notes</h2>
+        </div>
+        <div class="post-list">
       {% for post in category_posts %}
         <article class="post-card">
           <p class="post-card__meta">{{ post.date | date: "%b %-d, %Y" }}</p>
@@ -32,6 +37,17 @@ layout: default
       {% else %}
         <p>No posts in this category yet.</p>
       {% endfor %}
+        </div>
+      </div>
+      <aside class="sidebar-card">
+        <h2>Find a note</h2>
+        <p>Search this {{ topic.title | escape }} notebook.</p>
+        <label class="search-box">
+          <span class="screen-reader-text">Search {{ topic.title | escape }} notes</span>
+          <input type="search" placeholder="Search {{ topic.title | escape }}..." data-search-input data-search-url="{{ '/' | append: topic.slug | append: '/search.json' | relative_url }}">
+        </label>
+        <div class="search-results" data-search-results aria-live="polite"></div>
+      </aside>
     </div>
   </div>
 </section>

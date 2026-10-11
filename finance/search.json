@@ -1,0 +1,6 @@
+---
+layout: null
+category: finance
+permalink: /finance/search.json
+---
+{% include search-index.html %}

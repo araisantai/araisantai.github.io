@@ -1,0 +1,6 @@
+---
+layout: null
+category: books
+permalink: /books/search.json
+---
+{% include search-index.html %}

@@ -1,0 +1,6 @@
+---
+layout: null
+category: cybersecurity
+permalink: /cybersecurity/search.json
+---
+{% include search-index.html %}

@@ -2,50 +2,57 @@
 layout: default
 ---
 
-<section class="section home-categories" id="categories">
-  <div class="container">
-    <div class="section-heading">
-      <p class="eyebrow">All Categories</p>
-      <h1>Browse every notebook</h1>
-      <p>Each category collects notes around one part of life, study, or practice.</p>
+<section class="hero section">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">The person behind Arai Notes</p>
+      <h1>Hi, I'm Arai.</h1>
+      <p class="hero__lead">I'm building a habit of learning deliberately, writing honestly, and making a little progress each day. This is where I keep the notes along the way.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#about">A little about me</a>
+        <a class="button button--ghost" href="#approach">How I learn</a>
+      </div>
     </div>
-    <div class="category-grid category-grid--square">
-      {% for category in site.blog_categories %}
-        {% include category-card.html category=category %}
-      {% endfor %}
+    <div class="hero__panel" aria-label="My approach to learning">
+      <span>Curiosity</span>
+      <span>Practice</span>
+      <span>Reflection</span>
+      <span>Progress</span>
     </div>
   </div>
 </section>
 
-<section class="section section--muted" id="latest">
-  <div class="container latest-grid">
+<section class="section section--tight" id="about">
+  <div class="container intro-card">
     <div>
-      <div class="section-heading section-heading--left">
-        <p class="eyebrow">Latest Post</p>
-        <h2>Recent Notes</h2>
-        <p>Fresh entries from the journal, ordered by publication date.</p>
-      </div>
-      <div class="post-list">
-        {% for post in site.posts limit: 6 %}
-          <article class="post-card">
-            <p class="post-card__meta">{{ post.date | date: "%b %-d, %Y" }}</p>
-            <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
-            <p>{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
-          </article>
-        {% endfor %}
-      </div>
+      <p class="eyebrow">About me</p>
+      <h2>A work in progress, with a notebook.</h2>
     </div>
+    <p>I use writing to slow down and understand what I'm learning. Arai Notes is my personal space for observations, questions, and small lessons from everyday life. I don't have everything figured out; I value a clear question and an honest reflection as much as a finished answer.</p>
+  </div>
+</section>
 
-    <aside class="sidebar-card">
-      <p class="eyebrow">Search</p>
-      <h2>Find a note</h2>
-      <p>Search by title, category, or tag.</p>
-      <label class="search-box">
-        <span class="screen-reader-text">Search posts</span>
-        <input type="search" placeholder="Search Arai Notes..." data-search-input>
-      </label>
-      <div class="search-results" data-search-results aria-live="polite"></div>
-    </aside>
+<section class="section section--muted" id="approach">
+  <div class="container container--narrow">
+    <div class="section-heading section-heading--left">
+      <p class="eyebrow">How I learn</p>
+      <h2>Small steps. Useful notes.</h2>
+      <p>I try something, write down what happened, and return to it with a little more understanding. These notes are a record of that process.</p>
+    </div>
+    <div class="post-list">
+      <article class="post-card">
+        <h3>Stay curious</h3>
+        <p>Ask better questions, check sources, and leave room to change my mind.</p>
+      </article>
+      <article class="post-card">
+        <h3>Make time to reflect</h3>
+        <p>Notice what worked, what was difficult, and what I want to try next.</p>
+      </article>
+      <article class="post-card">
+        <h3>Share what is useful</h3>
+        <p>Write clearly enough that a lesson might help someone else, too. My notebooks are available through the navigation above.</p>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -54,23 +61,11 @@ layout: default
     <div>
       <p class="eyebrow">Contact</p>
       <h2>Get in touch</h2>
-      <p>
-        For questions, corrections, or thoughtful notes, email me directly. You can also use the links below to follow updates.
-      </p>
+      <p>For questions, corrections, or thoughtful notes, email me directly.</p>
     </div>
     <ul class="contact-list">
-      <li>
-        <span>Email</span>
-        <a href="mailto:{{ site.contact.email | default: site.email }}">{{ site.contact.email | default: site.email }}</a>
-      </li>
-      <li>
-        <span>Website</span>
-        <a href="{{ site.url }}">{{ site.url }}</a>
-      </li>
-      <li>
-        <span>RSS</span>
-        <a href="{{ '/feed.xml' | relative_url }}">Feed</a>
-      </li>
+      <li><span>Email</span><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+      <li><span>Website</span><a href="{{ site.url }}">{{ site.url }}</a></li>
     </ul>
   </div>
 </section>

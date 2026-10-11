@@ -6,7 +6,7 @@
   const toggle = document.querySelector("[data-theme-toggle]");
   const searchInput = document.querySelector("[data-search-input]");
   const searchResults = document.querySelector("[data-search-results]");
-  const searchUrl = "{{ '/search.json' | relative_url }}";
+  const searchUrl = searchInput?.dataset.searchUrl;
   let posts = [];
 
   const getPreferredTheme = () => {
@@ -87,6 +87,7 @@
       .then((response) => response.json())
       .then((data) => {
         posts = data;
+        renderResults(searchPosts(searchInput.value), searchInput.value.trim());
       })
       .catch(() => {
         searchResults.innerHTML = "<p>Search index is unavailable while the site is building.</p>";

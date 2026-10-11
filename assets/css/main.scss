@@ -855,3 +855,19 @@ button {
     flex-direction: column;
   }
 }
+
+.site-nav a[aria-current] {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.category-hero .container > p:last-child {
+  max-width: 680px;
+  margin: 1rem auto 0;
+}
+
+.sidebar-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}

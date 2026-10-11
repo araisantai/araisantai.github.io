@@ -1,28 +1,15 @@
+{% assign footer_category = page.category | default: page.categories.first %}
+{% assign footer_topic = site.blog_categories | where: "slug", footer_category | first %}
 <footer class="site-footer">
-  <div class="container site-footer__grid">
-    <div>
-      <a class="brand brand--footer" href="{{ '/' | relative_url }}">
-        <span>{{ site.title }}</span>
-      </a>
-      <p>{{ site.description }}</p>
+  <div class="container">
+    {% if footer_topic %}
+      <p>{{ footer_topic.title }} · {{ site.title }}</p>
+      <p>{{ footer_topic.description }}</p>
+    {% else %}
+      <p>{{ site.title }} · A personal journal by {{ site.author.name }}</p>
+    {% endif %}
+    <div class="site-footer__bottom">
+      <p>© {{ site.time | date: "%Y" }} {{ site.author.name }}.</p>
     </div>
-    <div>
-      <h2>Categories</h2>
-      <ul class="footer-list">
-        {% for category in site.blog_categories %}
-          <li><a href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">{{ category.nav_label | default: category.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div>
-      <h2>Follow</h2>
-      <ul class="footer-list">
-        <li><a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
-        <li><a href="{{ '/search.json' | relative_url }}">Search Index</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="container site-footer__bottom">
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. Built with Jekyll.</p>
   </div>
 </footer>
