@@ -613,6 +613,60 @@ button {
   overflow-wrap: anywhere;
 }
 
+.about {
+  display: grid;
+  gap: 1rem;
+}
+
+.about__role,
+.about__meta {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-block {
+  display: block;
+}
+
+.about-block--wide {
+  grid-column: 1 / -1;
+}
+
+.about-block h3 {
+  margin: 1.25rem 0 0.25rem;
+}
+
+.about-block ul {
+  padding-left: 1.2rem;
+}
+
+.about-block a {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.about-skills {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.6rem 1.25rem;
+  margin: 0;
+}
+
+.about-skills dt {
+  font-weight: 850;
+}
+
+.about-skills dd {
+  margin: 0;
+  color: var(--text-muted);
+}
+
 .category-hero {
   text-align: center;
 }
@@ -775,6 +829,7 @@ button {
   .intro-card,
   .latest-grid,
   .contact-card,
+  .about-grid,
   .site-footer__grid {
     grid-template-columns: 1fr;
   }
@@ -801,6 +856,10 @@ button {
 
   h2 {
     font-size: 2rem;
+  }
+
+  .about-skills {
+    grid-template-columns: 1fr;
   }
 
   .site-header__inner {
