@@ -30,6 +30,12 @@ layout: default
   </header>
 
   <div class="container container--narrow">
+    {% if page.image %}
+      <figure class="post-cover">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
+      </figure>
+    {% endif %}
+
     {% if page.disclaimer %}
       <aside class="notice">
         {{ page.disclaimer }}
