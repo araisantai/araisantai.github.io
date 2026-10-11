@@ -758,18 +758,26 @@ button {
 }
 
 .post-cover {
+  display: flex;
+  justify-content: center;
   margin: 2rem 0 0;
+  padding: 1rem;
   overflow: hidden;
+  background: var(--surface-soft);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
+/* Show the whole cover (wide banners and portrait book covers alike), never cropped. */
 .post-cover img {
   display: block;
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(560px, 70vh);
+  object-fit: contain;
+  border-radius: var(--radius-sm);
 }
 
 .post-content img {
@@ -838,11 +846,15 @@ button {
   border-bottom: 1px solid var(--border);
 }
 
+.post-card__image {
+  background: var(--surface-soft);
+}
+
 .post-card__image img {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 7;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .source-box {
