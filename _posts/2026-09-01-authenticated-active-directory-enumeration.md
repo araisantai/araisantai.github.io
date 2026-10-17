@@ -1,14 +1,14 @@
 ---
 title: "Authenticated Active Directory Enumeration"
-date: 2026-10-17 07:00:00 +0700
+date: 2026-09-01 07:00:00 +0700
 categories: [cybersecurity]
-tags: []
+tags: ["Active Directory", "Machine"]
 image: "/assets/img/posts/authenticated-active-directory-enumeration/cover.png"
 disclaimer: "Cybersecurity notes on Arai Notes are ethical, educational, and defensive-focused. They are intended to improve safety, awareness, and responsible system administration."
 render_with_liquid: false
 notion_id: "3a41d4b3b917806eb395dab96fd81c02"
-notion_hash: "b7d6723d40e530c2"
-notion_edited: "2026-10-17 09:05:23Z"
+notion_hash: "46fe41e75f1871bf"
+notion_edited: ""
 ---
 
 This post is just a cheatsheet for situations where we have access to an Active Directory domain. It provides a checklist of enumeration steps, useful commands, and key information to gather during the assessment.
