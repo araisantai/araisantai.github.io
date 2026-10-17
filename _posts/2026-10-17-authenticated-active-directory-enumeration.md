@@ -8,7 +8,7 @@ disclaimer: "Cybersecurity notes on Arai Notes are ethical, educational, and def
 render_with_liquid: false
 notion_id: "3a41d4b3b917806eb395dab96fd81c02"
 notion_hash: "b7d6723d40e530c2"
-notion_edited: ""
+notion_edited: "2026-10-17 09:05:23Z"
 ---
 
 This post is just a cheatsheet for situations where we have access to an Active Directory domain. It provides a checklist of enumeration steps, useful commands, and key information to gather during the assessment.
@@ -16,6 +16,7 @@ This post is just a cheatsheet for situations where we have access to an Active 
 ## Windows basic enumeration
 
 we need to know the groups and if there is possibility to escalation.
+
 ```shell
 whoami
 whoami /all
@@ -24,6 +25,7 @@ whoami /priv
 ```
 
 For domain information:
+
 ```shell
 echo %USERDOMAIN%
 echo %LOGONSERVER%
@@ -32,6 +34,7 @@ systeminfo
 ```
 
 For users and groups:
+
 ```shell
 net user /domain
 net user username /domain
@@ -42,6 +45,7 @@ net group "Enterprise Admins" /domain
 ```
 
 For domain/workstation/DC discovery:
+
 ```shell
 nltest /domain_trusts
 nltest /dclist:domain.local
@@ -50,6 +54,7 @@ nltest /sc_query:domain.local
 ```
 
 For Kerberos and SPNs:
+
 ```shell
 klist
 klist sessions
@@ -58,6 +63,7 @@ setspn -Q */*
 ```
 
 For shares and sessions:
+
 ```shell
 net view /domain
 net view \\HOSTNAME
@@ -65,6 +71,7 @@ net use
 ```
 
 For GPO information:
+
 ```shell
 gpresult /r
 gpresult /scope computer /v
@@ -72,6 +79,7 @@ gpresult /scope user /v
 ```
 
 If `dsquery` happens to already be installed on the host, you can use:
+
 ```shell
 dsquery user
 dsquery computer
@@ -80,12 +88,14 @@ dsquery server
 ```
 
 You can also use built-in PowerShell/.NET without importing a module. For example, query LDAP directly:
+
 ```powershell
 $root = [ADSI]"LDAP://RootDSE"
 $root.defaultNamingContext
 ```
 
 Enumerate users:
+
 ```powershell
 $root = [ADSI]"LDAP://RootDSE"
 $searcher = New-Object DirectoryServices.DirectorySearcher
@@ -98,6 +108,7 @@ $searcher.FindAll() | ForEach-Object {
 ```
 
 Computers:
+
 ```powershell
 $searcher.Filter = "(objectCategory=computer)"
 
@@ -107,6 +118,7 @@ $searcher.FindAll() | ForEach-Object {
 ```
 
 Groups:
+
 ```powershell
 $searcher.Filter = "(objectCategory=group)"
 
@@ -116,6 +128,7 @@ $searcher.FindAll() | ForEach-Object {
 ```
 
 SPN-enabled accounts:
+
 ```powershell
 $searcher.Filter = "(&(objectCategory=person)(objectClass=user)(servicePrincipalName=*))"
 
@@ -126,7 +139,8 @@ $searcher.FindAll() | ForEach-Object {
 ```
 
 So for a **zero-download / living-off-the-land AD enumeration workflow**, I'd primarily rely on:
-```plain text
+
+```text
 whoami
 net
 nltest
@@ -143,13 +157,15 @@ The most powerful option there is usually **PowerShell with ****`System.Director
 Yes. Think of `PswReaders` as a **capability clue**, not something you “run.”
 
 You already established:
-```plain text
+
+```text
 INFINITY\PswReaders
 └── ted
 ```
 
 So the red-team question is:
-```plain text
+
+```text
 What object/attribute/resource has an ACL that grants
 INFINITY\PswReaders some special read permission?
 ```
@@ -161,6 +177,7 @@ Given the name **`PswReaders`**, the first hypothesis I would test is **LAPS / m
 From the logged-in `ted` Windows session, you can query LDAP using the existing domain authentication — you do **not** need to know Ted's password again.
 
 Try:
+
 ```powershell
 ([adsisearcher]"(&(objectCategory=computer)(ms-Mcs-AdmPwdExpirationTime=*))").FindAll().Count
 ```
@@ -168,6 +185,7 @@ Try:
 If that returns computers, legacy Microsoft LAPS is probably deployed.
 
 For newer Windows LAPS:
+
 ```powershell
 ([adsisearcher]"(&(objectCategory=computer)(msLAPS-PasswordExpirationTime=*))").FindAll().Count
 ```
@@ -175,6 +193,7 @@ For newer Windows LAPS:
 ### 2. Identify machines with LAPS-related attributes
 
 Legacy LAPS:
+
 ```powershell
 $s = [adsisearcher]"(&(objectCategory=computer)(ms-Mcs-AdmPwdExpirationTime=*))"
 $s.PropertiesToLoad.Add("name") | Out-Null
@@ -186,6 +205,7 @@ $s.FindAll() | ForEach-Object {
 ```
 
 New LAPS:
+
 ```powershell
 $s = [adsisearcher]"(&(objectCategory=computer)(msLAPS-PasswordExpirationTime=*))"
 $s.PropertiesToLoad.Add("name") | Out-Null
@@ -199,6 +219,7 @@ $s.FindAll() | ForEach-Object {
 ### 3. Check whether Ted can read the protected password attribute
 
 For legacy LAPS, test whether the attribute is returned for a specific computer:
+
 ```powershell
 $s = [adsisearcher]"(&(objectCategory=computer)(name=COMPUTERNAME))"
 $s.PropertiesToLoad.Add("ms-Mcs-AdmPwd") | Out-Null
@@ -207,14 +228,16 @@ $r.Properties.Keys
 ```
 
 If you see:
-```plain text
+
+```text
 ms-mcs-admpwd
 ```
 
 then your authenticated `ted` context has permission to read that attribute.
 
 That would make the group name make a lot of sense:
-```plain text
+
+```text
 ted
  ↓
 PswReaders
@@ -225,7 +248,8 @@ managed local administrator credential
 ```
 
 For Windows LAPS, look for:
-```plain text
+
+```text
 msLAPS-Password
 msLAPS-EncryptedPassword
 ```
@@ -237,12 +261,14 @@ instead.
 If LAPS isn't present, investigate where the group's SID is referenced.
 
 You know the group SID:
-```plain text
+
+```text
 S-1-5-21-3616753307-3538385277-467097740-1108
 ```
 
 Potential intended uses include:
-```plain text
+
+```text
 PswReaders
 ├── LAPS password readers          ← first thing I'd check
 ├── password/configuration share
@@ -256,12 +282,14 @@ PswReaders
 ### 5. Check SYSVOL/GPO clues
 
 Since Ted is domain-authenticated:
+
 ```shell
 dir \\infinity.com\SYSVOL
 dir \\infinity.com\NETLOGON
 ```
 
 Search for the group name:
+
 ```shell
 findstr /S /I "PswReaders" \\infinity.com\SYSVOL\*.xml
 findstr /S /I "PswReaders" \\infinity.com\SYSVOL\*.inf
@@ -269,6 +297,7 @@ findstr /S /I "PswReaders" \\infinity.com\SYSVOL\*.ini
 ```
 
 And search for LAPS policy indicators:
+
 ```shell
 findstr /S /I "AdmPwd LAPS" \\infinity.com\SYSVOL\*.*
 ```
@@ -280,16 +309,19 @@ nltest /dsgetdc:infinity.com
 ```
 
 Suppose it gives:
-```plain text
+
+```text
 DC01.infinity.com
 ```
 
 Then:
+
 ```shell
 net view \\DC01
 ```
 
 and:
+
 ```shell
 dir \\DC01\SYSVOL
 dir \\DC01\NETLOGON
@@ -298,7 +330,8 @@ dir \\DC01\NETLOGON
 ### What I'd prioritize
 
 Based specifically on the name **`PswReaders`**, I would investigate in this order:
-```plain text
+
+```text
 1. Legacy LAPS
    ms-Mcs-AdmPwd
 
@@ -317,11 +350,13 @@ Your earlier SMB approach wasn't very useful because you were looking locally. `
 If the first LAPS count command returns something above `0`, that's the branch I would pursue first.
 
 `[adsisearcher]` is usually available on standard **Windows PowerShell 5.1** because it is a built-in PowerShell type accelerator for:
+
 ```powershell
 System.DirectoryServices.DirectorySearcher
 ```
 
 So on a typical domain-joined Windows workstation/server, you normally don't need to import anything:
+
 ```powershell
 $s = [adsisearcher]"(objectClass=user)"
 $s.FindAll()
@@ -336,16 +371,19 @@ But it is **not safe to assume it exists everywhere**. The important cases are:
 - Even when `[adsisearcher]` exists, it still needs network/DNS/LDAP access to a domain controller to enumerate AD.
 
 You can check it locally without importing anything:
+
 ```powershell
 [adsisearcher]
 ```
 
 or:
+
 ```powershell
 [adsisearcher]"(objectClass=*)"
 ```
 
 For a more explicit check:
+
 ```powershell
 [System.Management.Automation.PSTypeName]'System.DirectoryServices.DirectorySearcher'
 ```
@@ -353,16 +391,19 @@ For a more explicit check:
 If you see a valid `.Type`, the underlying class is available.
 
 You can also check the PowerShell version:
+
 ```powershell
 $PSVersionTable
 ```
 
 For a pentest where you want **maximum compatibility without dropping tools**, I would prefer this pattern:
+
 ```powershell
 $searcher = New-Object System.DirectoryServices.DirectorySearcher
 ```
 
 over relying solely on:
+
 ```powershell
 [adsisearcher]
 ```
@@ -370,11 +411,13 @@ over relying solely on:
 because it's clearer what underlying .NET class you're using.
 
 And `[ADSI]` is closely related but serves a slightly different purpose:
+
 ```powershell
 [ADSI]"LDAP://RootDSE"
 ```
 
 A useful zero-import combination is therefore:
+
 ```powershell
 [ADSI]
 [adsisearcher]
