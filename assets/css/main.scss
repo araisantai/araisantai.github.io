@@ -82,8 +82,7 @@ h1 {
   font-size: 3.25rem;
 }
 
-h2,
-.category-title {
+h2 {
   font-size: 3rem;
 }
 
@@ -517,6 +516,17 @@ button {
 .post-card h2,
 .post-card h3 {
   margin-bottom: 0.5rem;
+}
+
+/* Notebook pages: a compact list, not a hero. */
+.category-title {
+  font-size: 2rem;
+  line-height: 1.15;
+}
+
+.post-card h2 {
+  font-size: 1.375rem;
+  line-height: 1.3;
 }
 
 .sidebar-card {
@@ -1031,8 +1041,7 @@ button {
     font-size: 2.75rem;
   }
 
-  h2,
-  .category-title {
+  h2 {
     font-size: 2.35rem;
   }
 
@@ -1064,8 +1073,7 @@ button {
     font-size: 2.25rem;
   }
 
-  h2,
-  .category-title {
+  h2 {
     font-size: 2rem;
   }
 
