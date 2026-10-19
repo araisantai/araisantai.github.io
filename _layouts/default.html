@@ -10,10 +10,18 @@
       } catch (error) {
         document.documentElement.dataset.theme = "light";
       }
+      try {
+        var savedLang = localStorage.getItem("lang");
+        if (savedLang && savedLang !== "en") {
+          document.documentElement.lang = savedLang;
+          document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
+        }
+      } catch (error) {}
     </script>
     {% include seo.html %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
+    <script defer src="{{ '/assets/js/i18n.js' | relative_url }}"></script>
     <script defer src="{{ '/assets/js/main.js' | relative_url }}"></script>
   </head>
   <body>

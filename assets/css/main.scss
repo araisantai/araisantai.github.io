@@ -318,6 +318,60 @@ button {
   background: var(--surface-soft);
 }
 
+.site-header__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lang-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+  color: var(--text);
+}
+
+.lang-picker__icon {
+  position: absolute;
+  inset-inline-start: 0.6rem;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  pointer-events: none;
+}
+
+.lang-picker__select {
+  height: 2rem;
+  max-width: 9.5rem;
+  padding-block: 0;
+  padding-inline: 1.9rem 1.6rem;
+  background-color: var(--surface);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 0.85rem) 52%, calc(100% - 0.55rem) 52%;
+  background-size: 0.3rem 0.3rem;
+  background-repeat: no-repeat;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font: 500 0.82rem var(--font-body);
+  cursor: pointer;
+  appearance: none;
+}
+
+[dir="rtl"] .lang-picker__select {
+  background-position: 0.85rem 52%, 0.55rem 52%;
+}
+
+.lang-picker__select:hover,
+.lang-picker__select:focus-visible {
+  border-color: var(--text-muted);
+  outline: none;
+}
+
 .theme-toggle {
   position: relative;
   display: grid;
@@ -1334,5 +1388,56 @@ button {
 
   .post-content pre {
     font-size: 0.8125rem;
+  }
+}
+
+/* Google Translate: keep its banner, tooltips and highlights out of the design. */
+body > .skiptranslate,
+iframe.skiptranslate,
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-yAWNEb-L7lbkb,
+#google_translate_element {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Right-to-left (Arabic): mirror borders and indents; code stays left-to-right. */
+[dir="rtl"] .post-content blockquote,
+[dir="rtl"] .notice {
+  padding: 0 1.4rem 0 0;
+  border-left: 0;
+  border-right: 3px solid var(--text);
+}
+
+[dir="rtl"] .notice {
+  border-right-color: var(--border);
+}
+
+[dir="rtl"] .post-content ul,
+[dir="rtl"] .post-content ol {
+  padding-left: 0;
+  padding-right: 1.5em;
+}
+
+[dir="rtl"] .post-content pre,
+[dir="rtl"] .code-block {
+  direction: ltr;
+  text-align: left;
+}
+
+@media (max-width: 640px) {
+  .lang-picker__select {
+    max-width: 7.5rem;
   }
 }

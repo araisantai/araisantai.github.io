@@ -1,29 +1,47 @@
-<a class="skip-link" href="#main-content">Skip to content</a>
+<a class="skip-link" href="#main-content" data-i18n="skip">Skip to content</a>
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title | escape }} home">
+    <a class="brand notranslate" translate="no" href="{{ '/' | relative_url }}" aria-label="{{ site.title | escape }} home">
       <span>{{ site.title }}</span>
     </a>
 
     <nav class="site-nav" aria-label="Primary navigation">
       <details class="nav-dropdown">
-        <summary class="site-nav__link nav-dropdown__summary">Categories</summary>
+        <summary class="site-nav__link nav-dropdown__summary" data-i18n="nav.categories">Categories</summary>
         <div class="nav-dropdown__menu">
           {% assign active_category = page.category | default: page.categories.first %}
           {% for category in site.blog_categories %}
-            <a href="{{ category.url | relative_url }}"{% if active_category == category.slug %} aria-current="true"{% endif %}>{{ category.title }}</a>
+            <a href="{{ category.url | relative_url }}"{% if active_category == category.slug %} aria-current="true"{% endif %} data-i18n="topic.{{ category.slug }}">{{ category.title }}</a>
           {% endfor %}
         </div>
       </details>
 
-      <a class="site-nav__link" href="{{ '/' | relative_url }}">About Me</a>
+      <a class="site-nav__link" href="{{ '/' | relative_url }}" data-i18n="nav.about">About Me</a>
     </nav>
 
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
-      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9728;</span>
-      <span class="theme-toggle__knob" aria-hidden="true"></span>
-      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9790;</span>
-    </button>
+    <div class="site-header__actions">
+      <label class="lang-picker notranslate" translate="no">
+        <span class="screen-reader-text" data-i18n="lang.label">Language</span>
+        <svg class="lang-picker__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+        <select class="lang-picker__select" data-lang-select>
+          <option value="ar" lang="ar">العربية</option>
+          <option value="zh-CN" lang="zh">中文</option>
+          <option value="en" lang="en" selected>English</option>
+          <option value="fr" lang="fr">Français</option>
+          <option value="ru" lang="ru">Русский</option>
+          <option value="es" lang="es">Español</option>
+          <option value="ja" lang="ja">日本語</option>
+          <option value="id" lang="id">Bahasa Indonesia</option>
+        </select>
+      </label>
+
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9728;</span>
+        <span class="theme-toggle__knob" aria-hidden="true"></span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9790;</span>
+      </button>
+    </div>
   </div>
 </header>
+<div id="google_translate_element" hidden></div>

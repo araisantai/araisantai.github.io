@@ -10,7 +10,7 @@ layout: default
 <article class="post">
   <header class="post-header">
     <div class="container container--narrow">
-      <a class="back-link" href="{{ topic.url | relative_url }}">← {{ topic.title | escape }}</a>
+      <a class="back-link" href="{{ topic.url | relative_url }}" data-i18n="post.back" data-i18n-topic="{{ topic.slug }}">← {{ topic.title | escape }}</a>
       <h1 class="post-title">{{ page.title | escape }}</h1>
       {% if page.description %}
         <p class="post-subtitle">{{ page.description }}</p>
@@ -19,11 +19,11 @@ layout: default
       <div class="post-byline">
         <span class="post-byline__avatar" aria-hidden="true">{{ author_name | slice: 0 | upcase }}</span>
         <div class="post-byline__text">
-          <span class="post-byline__name">{{ author_name }}</span>
+          <span class="post-byline__name notranslate" translate="no">{{ author_name }}</span>
           <span class="post-byline__meta">
-            {{ read_minutes }} min read
+            <span data-i18n="post.minRead" data-i18n-n="{{ read_minutes }}">{{ read_minutes }} min read</span>
             <span aria-hidden="true">·</span>
-            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+            <time datetime="{{ page.date | date_to_xmlschema }}" data-i18n-date>{{ page.date | date: "%b %-d, %Y" }}</time>
           </span>
         </div>
       </div>
@@ -32,7 +32,7 @@ layout: default
         <div class="post-actions">
           {% for category_slug in page.categories %}
             {% assign tag_topic = site.blog_categories | where: "slug", category_slug | first %}
-            <a class="pill" href="{{ tag_topic.url | relative_url }}">{% if tag_topic %}{{ tag_topic.title }}{% else %}{{ category_slug }}{% endif %}</a>
+            <a class="pill" href="{{ tag_topic.url | relative_url }}"{% if tag_topic %} data-i18n="topic.{{ tag_topic.slug }}"{% endif %}>{% if tag_topic %}{{ tag_topic.title }}{% else %}{{ category_slug }}{% endif %}</a>
           {% endfor %}
           {% for tag in page.tags %}
             <span class="pill pill--quiet">{{ tag }}</span>
@@ -71,14 +71,14 @@ layout: default
     {% endif %}
 
     <nav class="post-nav" aria-label="More {{ topic.title | escape }} notes">
-      <p class="post-nav__label">More from {{ topic.title | escape }}</p>
+      <p class="post-nav__label" data-i18n="post.moreFrom" data-i18n-topic="{{ topic.slug }}">More from {{ topic.title | escape }}</p>
       {% assign related_posts = site.posts | where_exp: "post", "post.categories contains post_category" %}
       {% for related_post in related_posts limit: 4 %}
         {% unless related_post.url == page.url %}
           <a class="post-nav__item" href="{{ related_post.url | relative_url }}">{{ related_post.title | escape }}</a>
         {% endunless %}
       {% endfor %}
-      <a class="post-nav__all" href="{{ topic.url | relative_url }}">See all {{ topic.title | escape }} notes →</a>
+      <a class="post-nav__all" href="{{ topic.url | relative_url }}" data-i18n="post.seeAll" data-i18n-topic="{{ topic.slug }}">See all {{ topic.title | escape }} notes →</a>
     </nav>
   </div>
 </article>

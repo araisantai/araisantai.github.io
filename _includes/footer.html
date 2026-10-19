@@ -3,10 +3,10 @@
 <footer class="site-footer">
   <div class="container">
     {% if footer_topic %}
-      <p>{{ footer_topic.title }} · {{ site.title }}</p>
+      <p><span data-i18n="topic.{{ footer_topic.slug }}">{{ footer_topic.title }}</span> · <span class="notranslate" translate="no">{{ site.title }}</span></p>
       <p>{{ footer_topic.description }}</p>
     {% else %}
-      <p>{{ site.title }} · A personal journal by {{ site.author.name }}</p>
+      <p><span class="notranslate" translate="no">{{ site.title }}</span> · <span data-i18n="footer.journal" data-i18n-author="{{ site.author.name }}">A personal journal by {{ site.author.name }}</span></p>
     {% endif %}
     <div class="site-footer__bottom">
       <p>© {{ site.time | date: "%Y" }} {{ site.author.name }}.</p>

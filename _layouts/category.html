@@ -10,7 +10,7 @@ layout: default
     <div class="latest-grid">
       <div>
         <div class="section-heading section-heading--left">
-          <h1 class="category-title">Latest {{ topic.title | escape }} notes</h1>
+          <h1 class="category-title" data-i18n="cat.latest" data-i18n-topic="{{ topic.slug }}">Latest {{ topic.title | escape }} notes</h1>
         </div>
         <div class="post-list">
       {% for post in category_posts %}
@@ -20,21 +20,21 @@ layout: default
               <img src="{{ post.image | relative_url }}" alt="" loading="lazy">
             </a>
           {% endif %}
-          <p class="post-card__meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+          <p class="post-card__meta"><time datetime="{{ post.date | date_to_xmlschema }}" data-i18n-date>{{ post.date | date: "%b %-d, %Y" }}</time></p>
           <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
           <p>{{ post.description | default: post.excerpt | strip_html | truncate: 160 }}</p>
         </article>
       {% else %}
-        <p>No posts in this category yet.</p>
+        <p data-i18n="cat.empty">No posts in this category yet.</p>
       {% endfor %}
         </div>
       </div>
       <aside class="sidebar-card">
-        <h2>Find a note</h2>
-        <p>Search this {{ topic.title | escape }} notebook.</p>
+        <h2 data-i18n="cat.find">Find a note</h2>
+        <p data-i18n="cat.searchHint" data-i18n-topic="{{ topic.slug }}">Search this {{ topic.title | escape }} notebook.</p>
         <label class="search-box">
-          <span class="screen-reader-text">Search {{ topic.title | escape }} notes</span>
-          <input type="search" placeholder="Search {{ topic.title | escape }}..." data-search-input data-search-url="{{ '/' | append: topic.slug | append: '/search.json' | relative_url }}">
+          <span class="screen-reader-text" data-i18n="cat.searchPlaceholder" data-i18n-topic="{{ topic.slug }}">Search {{ topic.title | escape }} notes</span>
+          <input type="search" placeholder="Search {{ topic.title | escape }}..." data-i18n-placeholder="cat.searchPlaceholder" data-i18n-topic="{{ topic.slug }}" data-search-input data-search-url="{{ '/' | append: topic.slug | append: '/search.json' | relative_url }}">
         </label>
         <div class="search-results" data-search-results aria-live="polite"></div>
       </aside>

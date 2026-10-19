@@ -7,6 +7,7 @@
   const searchInput = document.querySelector("[data-search-input]");
   const searchResults = document.querySelector("[data-search-results]");
   const searchUrl = searchInput?.dataset.searchUrl;
+  const t = window.arainotesI18n?.t || ((key) => key);
   let posts = [];
 
   const getPreferredTheme = () => {
@@ -21,7 +22,7 @@
   const setTheme = (theme) => {
     root.dataset.theme = theme;
     if (toggle) {
-      toggle.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} mode`);
+      toggle.setAttribute("aria-label", t(theme === "dark" ? "theme.toLight" : "theme.toDark"));
       toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
     }
     try {
@@ -46,14 +47,14 @@
     }
 
     if (!items.length) {
-      searchResults.innerHTML = "<p>No matching notes yet.</p>";
+      searchResults.innerHTML = `<p>${t("search.none")}</p>`;
       return;
     }
 
     searchResults.innerHTML = items
       .slice(0, 6)
       .map((post) => {
-        const categories = post.categories.join(", ").replaceAll("-", " ");
+        const categories = post.categories.map((slug) => t(`topic.${slug}`)).join(", ");
         return `
           <a class="search-result" href="${post.url}">
             <strong>${post.title}</strong>
@@ -90,7 +91,7 @@
         renderResults(searchPosts(searchInput.value), searchInput.value.trim());
       })
       .catch(() => {
-        searchResults.innerHTML = "<p>Search index is unavailable while the site is building.</p>";
+        searchResults.innerHTML = `<p>${t("search.unavailable")}</p>`;
       });
 
     searchInput.addEventListener("input", (event) => {
@@ -132,26 +133,28 @@
     const language = languageClass ? languageClass.replace("language-", "") : "";
 
     const wrapper = document.createElement("div");
-    wrapper.className = "code-block";
+    wrapper.className = "code-block notranslate";
+    wrapper.setAttribute("translate", "no");
+    wrapper.dir = "ltr";
     const bar = document.createElement("div");
     bar.className = "code-block__bar";
     const label = document.createElement("span");
-    label.textContent = language && language !== "plaintext" && language !== "text" ? language : "code";
+    label.textContent = language && language !== "plaintext" && language !== "text" ? language : t("code.label");
     const button = document.createElement("button");
     button.type = "button";
     button.className = "code-block__copy";
-    button.setAttribute("aria-label", "Copy code to clipboard");
-    button.innerHTML = `${copyIcon}<span>Copy</span>`;
+    button.setAttribute("aria-label", t("code.aria"));
+    button.innerHTML = `${copyIcon}<span>${t("code.copy")}</span>`;
 
     button.addEventListener("click", async () => {
       const code = pre.querySelector("code") || pre;
       const ok = await copyText(code.innerText.replace(/\n$/, ""));
       button.toggleAttribute("data-copied", ok);
-      button.innerHTML = ok ? `${checkIcon}<span>Copied</span>` : `${copyIcon}<span>Press Ctrl+C</span>`;
+      button.innerHTML = ok ? `${checkIcon}<span>${t("code.copied")}</span>` : `${copyIcon}<span>${t("code.pressCtrlC")}</span>`;
       clearTimeout(button.resetTimer);
       button.resetTimer = setTimeout(() => {
         button.removeAttribute("data-copied");
-        button.innerHTML = `${copyIcon}<span>Copy</span>`;
+        button.innerHTML = `${copyIcon}<span>${t("code.copy")}</span>`;
       }, 1800);
     });
 
