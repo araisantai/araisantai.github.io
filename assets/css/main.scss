@@ -362,10 +362,6 @@ button {
   appearance: none;
 }
 
-[dir="rtl"] .lang-picker__select {
-  background-position: 0.85rem 52%, 0.55rem 52%;
-}
-
 .lang-picker__select:hover,
 .lang-picker__select:focus-visible {
   border-color: var(--text-muted);
@@ -1410,30 +1406,6 @@ body {
 .goog-text-highlight {
   background: none !important;
   box-shadow: none !important;
-}
-
-/* Right-to-left (Arabic): mirror borders and indents; code stays left-to-right. */
-[dir="rtl"] .post-content blockquote,
-[dir="rtl"] .notice {
-  padding: 0 1.4rem 0 0;
-  border-left: 0;
-  border-right: 3px solid var(--text);
-}
-
-[dir="rtl"] .notice {
-  border-right-color: var(--border);
-}
-
-[dir="rtl"] .post-content ul,
-[dir="rtl"] .post-content ol {
-  padding-left: 0;
-  padding-right: 1.5em;
-}
-
-[dir="rtl"] .post-content pre,
-[dir="rtl"] .code-block {
-  direction: ltr;
-  text-align: left;
 }
 
 @media (max-width: 640px) {

@@ -5,8 +5,7 @@
 // English is the source language; choosing another one is remembered in localStorage.
 (() => {
   const root = document.documentElement;
-  const LANGS = ["ar", "zh-CN", "en", "fr", "ru", "es", "ja", "id"];
-  const RTL = ["ar"];
+  const LANGS = ["zh-CN", "en", "fr", "ru", "es", "ja", "id"];
 
   const STRINGS = {
     en: {
@@ -36,34 +35,6 @@
       "code.pressCtrlC": "Press Ctrl+C",
       "code.aria": "Copy code to clipboard",
       "code.label": "code"
-    },
-    ar: {
-      "skip": "انتقل إلى المحتوى",
-      "nav.categories": "الفئات",
-      "nav.about": "نبذة عني",
-      "lang.label": "اللغة",
-      "theme.toDark": "التبديل إلى الوضع الداكن",
-      "theme.toLight": "التبديل إلى الوضع الفاتح",
-      "topic.cybersecurity": "الأمن السيبراني",
-      "topic.finance": "المالية",
-      "topic.books": "الكتب",
-      "cat.latest": "أحدث ملاحظات {topic}",
-      "cat.find": "ابحث عن ملاحظة",
-      "cat.searchHint": "ابحث في دفتر {topic}.",
-      "cat.searchPlaceholder": "ابحث في {topic}...",
-      "cat.empty": "لا توجد منشورات في هذه الفئة بعد.",
-      "search.none": "لا توجد ملاحظات مطابقة بعد.",
-      "search.unavailable": "فهرس البحث غير متاح أثناء بناء الموقع.",
-      "post.back": "→ {topic}",
-      "post.minRead": "قراءة {n} دقيقة",
-      "post.moreFrom": "المزيد من {topic}",
-      "post.seeAll": "عرض كل ملاحظات {topic} ←",
-      "footer.journal": "مدونة شخصية بقلم {author}",
-      "code.copy": "نسخ",
-      "code.copied": "تم النسخ",
-      "code.pressCtrlC": "اضغط Ctrl+C",
-      "code.aria": "انسخ الشيفرة إلى الحافظة",
-      "code.label": "شيفرة"
     },
     "zh-CN": {
       "skip": "跳到内容",
@@ -261,7 +232,7 @@
 
   const applyStrings = () => {
     root.lang = lang === "zh-CN" ? "zh-CN" : lang;
-    root.dir = RTL.includes(lang) ? "rtl" : "ltr";
+    root.dir = "ltr";
 
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       el.classList.add("notranslate");

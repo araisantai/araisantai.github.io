@@ -12,9 +12,8 @@
       }
       try {
         var savedLang = localStorage.getItem("lang");
-        if (savedLang && savedLang !== "en") {
+        if (savedLang && savedLang !== "en" && savedLang !== "ar") {
           document.documentElement.lang = savedLang;
-          document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
         }
       } catch (error) {}
     </script>
