@@ -9,8 +9,8 @@
   --text: #242424;
   --text-muted: #6b6b6b;
   --border: #e6e6e6;
-  --accent: #1a8917;
-  --accent-strong: #156d12;
+  --accent: #242424;
+  --accent-strong: #000000;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   --radius: 8px;
   --radius-sm: 8px;
@@ -31,7 +31,7 @@
   --tok-string: #0a3069;
   --tok-function: #8250df;
   --tok-class: #953800;
-  --tok-variable: #116329;
+  --tok-variable: #0969da;
 }
 
 :root[data-theme="dark"] {
@@ -42,8 +42,8 @@
   --text: rgba(255, 255, 255, 0.84);
   --text-muted: #a8a8a8;
   --border: #2e2e2e;
-  --accent: #3dbf3d;
-  --accent-strong: #6fd36f;
+  --accent: #ffffff;
+  --accent-strong: #e6e6e6;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   --code-bg: #1a1a1a;
   --code-border: #2e2e2e;
@@ -56,7 +56,7 @@
   --tok-string: #a5d6ff;
   --tok-function: #d2a8ff;
   --tok-class: #ffa657;
-  --tok-variable: #7ee787;
+  --tok-variable: #58a6ff;
 }
 
 * {
@@ -399,12 +399,12 @@ button {
 
 .button--primary {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--bg);
 }
 
 .button--primary:hover {
   background: var(--accent-strong);
-  color: #ffffff;
+  color: var(--bg);
 }
 
 .button--ghost {
